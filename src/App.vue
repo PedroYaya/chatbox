@@ -1,16 +1,22 @@
 <template>
   <div id="app">
-    <ChatBox/>
+    <Modal/>
+
+    <div style="display:none;">
+      <ChatBox/>
+    </div>
   </div>
 </template>
 
 <script>
 import ChatBox from './components/ChatBox.vue'
+import Modal from './components/Modal.vue'
 
 export default {
   name: 'App',
   components: {
-    ChatBox
+    ChatBox,
+    Modal
   }
 }
 </script>

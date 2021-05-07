@@ -50,8 +50,7 @@
 
         .download-img {
             cursor: pointer;
-            width: 2rem;
-            background: #badfff;
+            width: 2.5rem;
             padding: .2rem;
             border-radius: 2rem;
             margin-top: 1rem;

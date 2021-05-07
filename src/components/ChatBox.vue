@@ -1,9 +1,5 @@
 <template>
   <section class="chat-box">
-    <div class="header">
-      <h3>Comentarios</h3>
-      <a>x</a>
-    </div>
     <div class="list-container" ref="chatbox">
       <ul class="list">
         <li v-for="(message, idx) in messages" :key="idx">
@@ -132,39 +128,6 @@ export default {
     position: relative;
     max-height: 500px;
     overflow: scroll;
-  }
-
-  .chat-box {
-    width: 90vw;
-    max-width: 700px;
-    height: 100%;
-    background: white;
-    border: .1rem solid red;
-    border-radius: .3rem;
-    margin: 1rem auto;
-    justify-content: space-between;
-  }
-
-  .header {
-    position: relative;
-    border-bottom: .2rem solid black;
-
-    h3 {
-      position: absolute;
-      margin: .5rem;
-      left: 1rem;
-      right: 1rem;
-      line-height: 2.5rem;
-    }
-
-    a {
-      display: flex;
-      justify-content: flex-end;
-      font-size: 1.5rem;
-      padding: .5rem 1rem;
-      color: #0B8CFA;
-      font-weight: 500;
-    }
   }
 
   .list {

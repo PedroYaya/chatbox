@@ -52,6 +52,7 @@
         .user-img {
             background: #e8e8e8;
             padding: .4rem;
+            margin-top: .5rem;
             width: 1.4rem;
             height: 1.4rem;
             border-radius: 2rem;

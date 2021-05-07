@@ -12,26 +12,24 @@
         </li>
       </ul>
     </div>
-    <div class="inputs">
-      <input type="text" v-model="message" @keyup.enter="send">
-      <button @click="send">></button>
-    </div>
+    <ChatInput v-on:send="send($event)"/>
   </section>
 </template>
 
 <script>
 import Message from "./Message";
 import File from "./File";
+import ChatInput from "./ChatInput";
 
 export default {
   name: 'ChatBox',
   components: {
     Message,
-    File
+    File,
+    ChatInput
   },
   data() {
     return {
-      message: '',
       messages: [
         {
           version: 'Version 1',
@@ -86,14 +84,16 @@ export default {
     })
   },
   methods: {
-    send() {
-      if (this.message !== '') {
-        const date = new Date();
+    send(message) {
 
+      if (message !== '') {
+
+        const date = new Date();
         this.messages.push({
-          text: this.message,
+          text: message,
           by: 'student',
-          date: date.toDateString()
+          date: date.toDateString(),
+          type: 'message'
         })
 
         const BASE_URL = 'https://dummyapi.io/data/api'
@@ -106,13 +106,13 @@ export default {
                   this.messages.push({
                     text: res.data.text,
                     by: 'teacher',
-                    date: date.toDateString()
+                    date: date.toDateString(),
+                    type: 'message'
                   })
                   this.$nextTick(() => {
                     this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
                   })
                 })
-        this.message = ''
       }
     }
   }
@@ -169,39 +169,5 @@ export default {
 
   .list {
     padding: .5rem;
-
-  }
-
-  .inputs {
-    display: flex;
-    border-top: 1px solid #d2cfcf;
-    padding: 1.3rem .7rem;
-
-    input {
-      line-height: 3;
-      width: 100%;
-      border: none;
-      padding: 0 1rem;
-      background: #f7f7f7;
-      border-radius: 1.5rem;
-      border: .05rem solid #bfbfbf;
-    }
-
-    button {
-      background: #0B8CFA;
-      color: white;
-      border-radius: 3rem;
-      border: none;
-      cursor: pointer;
-      font-size: 2rem;
-      width: 3.2rem;
-      font-weight: 900;
-      margin: 0 .6rem;
-    }
-
-  }
-
-  *:focus {
-    outline: none;
   }
 </style>

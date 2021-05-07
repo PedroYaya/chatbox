@@ -6,27 +6,30 @@
     </div>
     <div class="list-container" ref="chatbox">
       <ul class="list">
+        <li v-for="(message, idx) in messages" :key="idx">
 
-        <div class="file-container">
-          <div>
-            <h4>VERSION 1</h4>
-            <p>Titulo del archivo a subir</p>
-            <div>
-              <span>Document / PDF (4.4MB)</span>
-              <span> 28 Dic 2020 / 15:33</span>
-            </div>
-          </div>
-          <a>
-            <img class="download-img" src="./../assets/download.png"/>
-          </a>
-        </div>
-
-
-        <li class="message" :class="message.by"
-            v-for="(message, idx) in messages" :key="idx">
+          <div v-if="message.type === 'message'" class="message" :class="message.by">
             <img class="user-img" v-if="message.by === 'teacher'" src="./../assets/user.png"/>
-            <p>{{ message.text }}</p>
+            <p>{{ message.text }}
+              <small>{{ message.date }}</small>
+            </p>
             <img class="user-img" v-if="message.by === 'student'" src="./../assets/user.png"/>
+          </div>
+
+          <div v-if="message.type === 'file'" class="file-container">
+            <div>
+              <h4>{{ message.version }}</h4>
+              <p>{{ message.name }}</p>
+              <div>
+                <span>{{ message.file.type }}</span>
+                <span class="size">{{ message.file.size }}</span>
+              </div>
+            </div>
+            <a :href="message.url" target=”_blank”>
+              <img class="download-img" src="./../assets/download.png"/>
+            </a>
+          </div>
+
         </li>
       </ul>
     </div>
@@ -45,62 +48,66 @@ export default {
       message: '',
       messages: [
         {
-          text: 'primer mensaje',
-          by: 'student'
-        },
-        {
-          text: 'primer respuesta',
-          by: 'teacher'
-        },
-        {
-          text: 'primer mensaje',
-          by: 'student'
-        },
-        {
-          text: 'primer respuesta',
-          by: 'teacher'
+          version: 'Version 1',
+          name: 'Title of my first work',
+          file: {
+            type: 'PDF Documnent',
+            size: '2.5MB'
+          },
+          url: 'https://griersmusings.files.wordpress.com/2019/12/thecompleteguidetothetarot_bygray.pdf',
+          type: 'file'
         },
         {
           text: 'primer mensaje',
-          by: 'student'
+          by: 'student',
+          date: 'Fri May 07 2021',
+          type: 'message'
         },
         {
           text: 'primer respuesta',
-          by: 'teacher'
+          by: 'teacher',
+          date: 'Fri May 07 2021',
+          type: 'message'
         },
         {
           text: 'primer mensaje',
-          by: 'student'
+          by: 'student',
+          date: 'Fri May 07 2021',
+          type: 'message'
+        },
+        {
+          version: 'Version 2',
+          name: 'Title of my second work',
+          file: {
+            type: 'PDF Documnent',
+            size: '5.5MB'
+          },
+          url: 'https://griersmusings.files.wordpress.com/2019/12/thecompleteguidetothetarot_bygray.pdf',
+          type: 'file'
         },
         {
           text: 'primer respuesta',
-          by: 'teacher'
-        },
-        {
-          text: 'primer mensaje',
-          by: 'student'
-        },
-        {
-          text: 'primer respuesta',
-          by: 'teacher'
-        },
-        {
-          text: 'segundo mensaje',
-          by: 'student'
-        },
-        {
-          text: 'segunda mensaje',
-          by: 'teacher'
-        },
+          by: 'teacher',
+          date: 'Fri May 07 2021',
+          type: 'message'
+        }
       ]
     }
+  },
+  mounted() {
+    this.$nextTick(() => {
+      this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
+    })
   },
   methods: {
     send() {
       if (this.message !== '') {
+        const date = new Date();
+
         this.messages.push({
           text: this.message,
-          by: 'student'
+          by: 'student',
+          date: date.toDateString()
         })
 
         const BASE_URL = 'https://dummyapi.io/data/api'
@@ -109,16 +116,16 @@ export default {
 
         this.$axios.get(`${BASE_URL}/post/${POST_ID}`, { headers: { 'app-id': APP_ID } })
                 .then(res => {
+
                   this.messages.push({
                     text: res.data.text,
-                    by: 'teacher'
+                    by: 'teacher',
+                    date: date.toDateString()
                   })
-
                   this.$nextTick(() => {
                     this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
                   })
                 })
-
         this.message = ''
       }
     }
@@ -186,8 +193,13 @@ export default {
         margin: 0 1rem;
         padding: .5rem 1rem;
         border-radius: .3rem;
-      }
 
+        small {
+          display: block;
+          text-align: left;
+          font-size: .7rem;
+        }
+      }
 
       &.teacher {
 
@@ -238,6 +250,7 @@ export default {
       cursor: pointer;
       font-size: 2rem;
       width: 3.2rem;
+      font-weight: 900;
       margin: 0 .6rem;
     }
 
@@ -267,6 +280,10 @@ export default {
 
     span {
       font-size: .9rem;
+    }
+
+    .size {
+      margin-left: .5rem;
     }
 
     .download-img {

@@ -1,0 +1,61 @@
+<template>
+    <div class="file">
+        <div>
+            <h4>{{ message.version }}</h4>
+            <p>{{ message.name }}</p>
+            <div>
+                <span>{{ message.file.type }}</span>
+                <span class="size">{{ message.file.size }}</span>
+            </div>
+        </div>
+        <a :href="message.url" target=”_blank”>
+            <img class="download-img" src="./../assets/download.png"/>
+        </a>
+    </div>
+</template>
+
+<script>
+    export default {
+        name: 'File',
+        props: ['message']
+    }
+</script>
+
+<style scoped lang="scss">
+    .file {
+        display: flex;
+        justify-content: space-between;
+        text-align: left;
+        border-top: .1rem solid #80808040;
+        border-bottom: .1rem solid #80808040;
+        padding: 1rem;
+
+        h4 {
+            margin: 0;
+        }
+
+        p {
+            margin: .5rem 0;
+            color: #0B8CFA;
+            font-weight: 900;
+        }
+
+        span {
+            font-size: .9rem;
+        }
+
+        .size {
+            margin-left: .5rem;
+        }
+
+        .download-img {
+            cursor: pointer;
+            width: 2rem;
+            background: #badfff;
+            padding: .2rem;
+            border-radius: 2rem;
+            margin-top: 1rem;
+        }
+    }
+
+</style>

@@ -7,29 +7,8 @@
     <div class="list-container" ref="chatbox">
       <ul class="list">
         <li v-for="(message, idx) in messages" :key="idx">
-
-          <div v-if="message.type === 'message'" class="message" :class="message.by">
-            <img class="user-img" v-if="message.by === 'teacher'" src="./../assets/user.png"/>
-            <p>{{ message.text }}
-              <small>{{ message.date }}</small>
-            </p>
-            <img class="user-img" v-if="message.by === 'student'" src="./../assets/user.png"/>
-          </div>
-
-          <div v-if="message.type === 'file'" class="file-container">
-            <div>
-              <h4>{{ message.version }}</h4>
-              <p>{{ message.name }}</p>
-              <div>
-                <span>{{ message.file.type }}</span>
-                <span class="size">{{ message.file.size }}</span>
-              </div>
-            </div>
-            <a :href="message.url" target=”_blank”>
-              <img class="download-img" src="./../assets/download.png"/>
-            </a>
-          </div>
-
+          <Message v-if="message.type === 'message'" :message="message"/>
+          <File v-if="message.type === 'file'" :message="message"/>
         </li>
       </ul>
     </div>
@@ -41,8 +20,15 @@
 </template>
 
 <script>
+import Message from "./Message";
+import File from "./File";
+
 export default {
   name: 'ChatBox',
+  components: {
+    Message,
+    File
+  },
   data() {
     return {
       message: '',
@@ -184,47 +170,6 @@ export default {
   .list {
     padding: .5rem;
 
-    .message {
-      display: flex;
-      align-content: center;
-      margin: 1rem 0;
-
-      p {
-        margin: 0 1rem;
-        padding: .5rem 1rem;
-        border-radius: .3rem;
-
-        small {
-          display: block;
-          text-align: left;
-          font-size: .7rem;
-        }
-      }
-
-      &.teacher {
-
-        p {
-          background: #fafafa;
-        }
-      }
-
-      &.student {
-        justify-content: flex-end;
-
-        p {
-          color: white;
-          background: #0B8CFA;
-        }
-      }
-
-      .user-img {
-        background: #e8e8e8;
-        padding: .4rem;
-        width: 1.4rem;
-        height: 1.4rem;
-        border-radius: 2rem;
-      }
-    }
   }
 
   .inputs {
@@ -258,41 +203,5 @@ export default {
 
   *:focus {
     outline: none;
-  }
-
-  .file-container {
-    display: flex;
-    justify-content: space-between;
-    text-align: left;
-    border-top: .1rem solid #80808040;
-    border-bottom: .1rem solid #80808040;
-    padding: 1rem;
-
-    h4 {
-      margin: 0;
-    }
-
-    p {
-      margin: .5rem 0;
-      color: #0B8CFA;
-      font-weight: 900;
-    }
-
-    span {
-      font-size: .9rem;
-    }
-
-    .size {
-      margin-left: .5rem;
-    }
-
-    .download-img {
-      cursor: pointer;
-      width: 2rem;
-      background: #badfff;
-      padding: .2rem;
-      border-radius: 2rem;
-      margin-top: 1rem;
-    }
   }
 </style>

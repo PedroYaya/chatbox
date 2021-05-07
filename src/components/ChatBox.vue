@@ -8,7 +8,9 @@
       <ul class="list">
         <li class="message" :class="message.by"
             v-for="(message, idx) in messages" :key="idx">
-          <p>{{ message.text }}</p>
+            <img v-if="message.by === 'teacher'" src="./../assets/user.png"/>
+            <p>{{ message.text }}</p>
+            <img v-if="message.by === 'student'" src="./../assets/user.png"/>
         </li>
       </ul>
       <div class="inputs">
@@ -115,23 +117,39 @@ export default {
   .list {
     padding: .5rem;
 
-    p {
-      padding: .5rem 1.5rem;
-      border-radius: .5rem;
-    }
+    .message {
+      display: flex;
+      align-content: center;
+      margin: 1rem 0;
 
-    .teacher {
       p {
-        float: left;
-        background: #fafafa;
+        margin: 0 1rem;
+        padding: .5rem 1.5rem;
       }
-    }
 
-    .student {
-      p {
-        color: white;
-        float: right;
-        background: #0B8CFA;
+
+      &.teacher {
+
+        p {
+          background: #fafafa;
+        }
+      }
+
+      &.student {
+        justify-content: flex-end;
+
+        p {
+          color: white;
+          background: #0B8CFA;
+        }
+      }
+
+      img {
+        background: #e8e8e8;
+        padding: .4rem;
+        width: 1.4rem;
+        height: 1.4rem;
+        border-radius: 2rem;
       }
     }
   }

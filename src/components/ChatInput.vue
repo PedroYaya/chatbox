@@ -3,7 +3,9 @@
 <template>
     <div class="input-container">
         <input type="text" v-model="message" @keyup.enter="send">
-        <button @click="send">></button>
+        <a class="send-btn" @click="send">
+            <img src="./../assets/send.png"/>
+        </a>
     </div>
 </template>
 
@@ -27,11 +29,12 @@
 <style scoped lang="scss">
     .input-container {
         display: flex;
+        align-items: center;
         border-top: 1px solid #d2cfcf;
         padding: 1.3rem .7rem;
 
         input {
-            line-height: 3;
+            line-height: 2.3rem;
             width: 100%;
             border: none;
             padding: 0 1rem;
@@ -40,16 +43,24 @@
             border: .05rem solid #bfbfbf;
         }
 
-        button {
+        .send-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background: #0B8CFA;
-            color: white;
-            border-radius: 3rem;
-            border: none;
-            cursor: pointer;
-            font-size: 2rem;
-            width: 3.2rem;
-            font-weight: 900;
-            margin: 0 .6rem;
+            width: 2.7rem;
+            height: 2.4rem;
+            border-radius: 2rem;
+            margin: 0 .5rem 0 1rem;
+
+            @media (min-width: 1024px) {
+                width: 2.5rem;
+            }
+
+            img {
+                width: 1.5rem;
+                height: 1.5rem;
+            }
         }
 
     }

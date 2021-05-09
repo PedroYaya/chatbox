@@ -16,6 +16,7 @@
 import Message from "./Message";
 import File from "./File";
 import ChatInput from "./ChatInput";
+import Json from "./../../db.json";
 
 export default {
   name: 'ChatBox',
@@ -26,52 +27,7 @@ export default {
   },
   data() {
     return {
-      messages: [
-        {
-          version: 'Version 1',
-          name: 'Title of my first work',
-          file: {
-            type: 'PDF Documnent',
-            size: '2.5MB'
-          },
-          url: 'https://griersmusings.files.wordpress.com/2019/12/thecompleteguidetothetarot_bygray.pdf',
-          type: 'file'
-        },
-        {
-          text: 'primer mensaje',
-          by: 'student',
-          date: 'Fri May 07 2021',
-          type: 'message'
-        },
-        {
-          text: 'primer respuesta',
-          by: 'teacher',
-          date: 'Fri May 07 2021',
-          type: 'message'
-        },
-        {
-          text: 'primer mensaje',
-          by: 'student',
-          date: 'Fri May 07 2021',
-          type: 'message'
-        },
-        {
-          version: 'Version 2',
-          name: 'Title of my second work',
-          file: {
-            type: 'PDF Documnent',
-            size: '5.5MB'
-          },
-          url: 'https://griersmusings.files.wordpress.com/2019/12/thecompleteguidetothetarot_bygray.pdf',
-          type: 'file'
-        },
-        {
-          text: 'primer respuesta',
-          by: 'teacher',
-          date: 'Fri May 07 2021',
-          type: 'message'
-        }
-      ]
+      messages: Json.messages
     }
   },
   mounted() {

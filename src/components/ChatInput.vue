@@ -1,10 +1,8 @@
-
-
 <template>
-    <div class="input-container">
-        <input type="text" v-model="message" @keyup.enter="send">
-        <a class="send-btn" @click="send">
-            <img src="./../assets/send.png"/>
+    <div class='input-container'>
+        <input type='text' v-model='message' @keyup.enter='send'>
+        <a class='send-btn' @click='send'>
+            <img src='./../assets/send.png'/>
         </a>
     </div>
 </template>
@@ -26,7 +24,7 @@
     }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
     .input-container {
         display: flex;
         align-items: center;

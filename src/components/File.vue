@@ -1,16 +1,16 @@
 <template>
-    <div class="file">
+    <div class='file'>
         <div>
             <h6>{{ message.version }}</h6>
             <p>{{ message.name }}</p>
             <div>
                 <span>{{ message.file.type }}</span>
-                <span class="size">{{ message.file.size }}</span>
-                <span class="date">{{ message.date }}</span>
+                <span class='size'>{{ message.file.size }}</span>
+                <span class='date'>{{ message.date }}</span>
             </div>
         </div>
-        <a :href="message.url" target=”_blank”>
-            <img class="download-img" src="./../assets/download.png"/>
+        <a :href='message.url' target='_blank'>
+            <img class='download-img' src='./../assets/download.png'/>
         </a>
     </div>
 </template>

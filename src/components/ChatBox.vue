@@ -13,10 +13,10 @@
 </template>
 
 <script>
-import Message from "./Message";
-import File from "./File";
-import ChatInput from "./ChatInput";
-import Json from "./../../db.json";
+import Message from './Message';
+import File from './File';
+import ChatInput from './ChatInput';
+import Json from './../../db.json';
 
 export default {
   name: 'ChatBox',
@@ -72,7 +72,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style scoped lang='scss'>
 
   .chat-box, .list {
     display: flex;

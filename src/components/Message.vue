@@ -1,6 +1,6 @@
 <template>
-    <div class="message" :class="message.by">
-        <img class="user-img" v-if="message.by === 'teacher'" src="./../assets/teacher.png"/>
+    <div class='message' :class='message.by'>
+        <img class='user-img' v-if="message.by === 'teacher'" src='./../assets/teacher.png'/>
         <p>{{ message.text }}
             <small>{{ message.date }}</small>
         </p>

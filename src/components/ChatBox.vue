@@ -30,11 +30,6 @@ export default {
       messages: Json.messages
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
-    })
-  },
   methods: {
     send(message) {
 
@@ -49,7 +44,7 @@ export default {
         })
 
         const BASE_URL = 'https://dummyapi.io/data/api'
-        const APP_ID = '6094e0f7ae6d813da0908e7b'
+        const APP_ID = '60993b61341a0d439423de21'
         const POST_ID = 'UWdcOFTc7DfzOhI6LpI4'
 
         this.$axios.get(`${BASE_URL}/post/${POST_ID}`, { headers: { 'app-id': APP_ID } })
@@ -61,14 +56,16 @@ export default {
                     date: date.toDateString(),
                     type: 'message'
                   })
-                  this.$nextTick(() => {
-                    this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
-                  })
+                  this.scrollDown();
                 })
       }
+    },
+    scrollDown() {
+      this.$nextTick(() => {
+        this.$refs.chatbox.scrollTop = this.$refs.chatbox.scrollHeight
+      })
     }
   }
-
 }
 </script>
 

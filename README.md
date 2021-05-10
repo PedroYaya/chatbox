@@ -35,5 +35,5 @@ yarn test:unit:watch
 ### Extra comments:
 ```
 I decided to use Bootstrap v5.0.0 for the modal implementation 
-and I added little API get request with Axios to show, as an example, a response to the student messages.
+and I added an API get request with Axios to show, as an example, a response to the student messages.
 ```

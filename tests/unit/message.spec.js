@@ -5,6 +5,7 @@ describe('Message.vue', () => {
   it('renders props when passed', () => {
     const msg = 'new message'
     const date = '23 feb'
+
     const wrapper = shallowMount(Message, {
       propsData: {
         message: {
@@ -13,6 +14,7 @@ describe('Message.vue', () => {
         }
       }
     })
+
     expect(wrapper.vm.$props.message.msg).toBe(msg)
     expect(wrapper.vm.$props.message.date).toBe(date)
   })

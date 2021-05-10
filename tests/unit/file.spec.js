@@ -10,6 +10,7 @@ describe('File.vue', () => {
     const fileSize = 'fileSize'
     const url = 'url'
     const type = 'type'
+
     const wrapper = shallowMount(File, {
       propsData: {
         message: {
@@ -25,6 +26,7 @@ describe('File.vue', () => {
         }
       }
     })
+
     expect(wrapper.vm.$props.message.version).toBe(version)
     expect(wrapper.vm.$props.message.name).toBe(name)
     expect(wrapper.vm.$props.message.date).toBe(date)

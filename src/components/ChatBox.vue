@@ -13,12 +13,12 @@
 </template>
 
 <script>
-import Message from './Message';
-import File from './File';
-import ChatInput from './ChatInput';
-import Json from './../../db.json';
+  import Message from './Message';
+  import File from './File';
+  import ChatInput from './ChatInput';
+  import Json from './../../db.json';
 
-export default {
+  export default {
   name: 'ChatBox',
   components: {
     Message,
@@ -78,9 +78,19 @@ export default {
   }
 
   .list-container {
+    display: flex;
+    flex-direction: column-reverse;
     position: relative;
-    max-height: 500px;
+    max-height: 400px;
     overflow: scroll;
+
+    @media (min-width: 360px) {
+      max-height: 470px;
+    }
+
+    @media (min-width: 768px) {
+      max-height: 600px;
+    }
   }
 
   .list {

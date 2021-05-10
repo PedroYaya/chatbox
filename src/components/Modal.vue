@@ -7,10 +7,10 @@
     </div>
 </template>
 <script>
-import { BModal, VBModal } from 'bootstrap-vue'
-import ChatBox from "./ChatBox";
+    import { BModal, VBModal } from 'bootstrap-vue'
+    import ChatBox from "./ChatBox";
 
-export default {
+    export default {
     name: 'Modal',
     components: {
         BModal,

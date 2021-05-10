@@ -13,8 +13,14 @@
     },
     {
       "text": "pre served message",
-      "by": "teacher",
+      "by": "student",
       "date": "31 dic 2020 8:30",
+      "type": "message"
+    },
+    {
+      "text": "pre served message",
+      "by": "teacher",
+      "date": "31 dic 2020 8:45",
       "type": "message"
     },
     {
@@ -41,27 +47,26 @@
       "type": "message"
     },
     {
+      "version": "Version 3",
+      "name": "Title of my third work",
+      "date": "10 ene 2021 19:00",
+      "file": {
+        "type": "Documento / PDF",
+        "size": "3.5MB"
+      },
+      "url": "http://sostenible.palencia.uva.es/sites/default/files/page/attach/lorem_ipsum_definicion.pdf",
+      "type": "file"
+    },
+    {
       "text": "pre served message",
       "by": "student",
-      "date": "08 ene 2021 20:21",
+      "date": "10 ene 2021 19:01",
       "type": "message"
     },
     {
       "text": "pre served message",
       "by": "teacher",
-      "date": "10 ene 2021 12:00",
-      "type": "message"
-    },
-    {
-      "text": "pre served message",
-      "by": "student",
-      "date": "11 ene 2021 11:50",
-      "type": "message"
-    },
-    {
-      "text": "pre served message",
-      "by": "teacher",
-      "date": "11 ene 2021 11:52",
+      "date": "10 ene 2021 19:10",
       "type": "message"
     }
   ]

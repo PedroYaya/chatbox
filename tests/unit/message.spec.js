@@ -2,7 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import Message from '@/components/Message.vue'
 
 describe('Message.vue', () => {
-  it('renders props.msg when passed', () => {
+  it('renders props when passed', () => {
     const msg = 'new message'
     const date = '23 feb'
     const wrapper = shallowMount(Message, {
